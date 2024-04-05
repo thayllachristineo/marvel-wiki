@@ -1,11 +1,11 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_KEY: string;
+  readonly VITE_API_BASE_URL: string;
+  readonly VITE_API_PUBLIC_KEY: string;
+  readonly VITE_API_PRIVATE_KEY: string;
 }
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
-
-// To use: mport.meta.env.VITE_KEY;
