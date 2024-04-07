@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container } from '@chakra-ui/react';
+import { Container, Text, Flex } from '@chakra-ui/react';
 
 import Input from './components/Typeahead';
 import Description from './components/CharacterDescription';
@@ -13,6 +13,8 @@ import {
 } from './services';
 import { CharacterResult } from './@types/character.types';
 import { AppearanceResult } from './@types/appearance.types';
+import useNavigatorOnLine from './hooks/useNetworkStatus';
+import { NoNetwork } from './Icons/NoNetwork';
 
 const App = () => {
   const [charDataAPI, setCharDataAPI] = useState<Array<CharacterResult>>([]);
@@ -33,6 +35,8 @@ const App = () => {
   const [loadingListComics, setLoadingListComics] = useState<boolean>(false);
   const [loadingListSeries, setLoadingListSeries] = useState<boolean>(false);
   const [loadingListStories, setLoadingListStories] = useState<boolean>(false);
+
+  const isOnline = useNavigatorOnLine();
 
   const handleOnChange = async (characterName: string) => {
     setLoadingChar(true);
@@ -76,6 +80,12 @@ const App = () => {
 
   return (
     <Container>
+      {!isOnline && (
+        <Flex bgColor="red.300" p={4} gap={2}>
+          <NoNetwork w={8} h={8} color="white" />
+          <Text color="white">Você está offline</Text>
+        </Flex>
+      )}
       <Input
         onChange={handleOnChange}
         onClickResult={({ id }) => setSelectedCharacterId(id as number)}
