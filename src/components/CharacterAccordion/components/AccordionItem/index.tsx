@@ -9,9 +9,10 @@ import {
 } from '@chakra-ui/react';
 import { FC, useMemo } from 'react';
 
-import ContentList from '../ContentItem';
 import { TProps } from './AccordionItem.types';
-import { Spinner } from '../../../Loading';
+
+import ContentList from '../ContentItem';
+import { Spinner } from 'components/Loading';
 
 const AccordionItem: FC<TProps> = ({ name, onClick, list, loading }) => {
   const Listings = useMemo(() => {

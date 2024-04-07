@@ -1,5 +1,5 @@
-import { AppearanceResult } from '../../@types/appearance.types';
-import { CharacterResult } from '../../@types/character.types';
+import { AppearanceResult } from 'types/appearance.types';
+import { CharacterResult } from 'types/character.types';
 
 type TAppearance = {
   onClick: (characterId: CharacterResult['id']) => void;

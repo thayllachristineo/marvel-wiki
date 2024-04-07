@@ -1,7 +1,8 @@
 import { md5 } from 'js-md5';
-import { CharacterResponse } from '../@types/character.types';
-import { AppearanceResponse } from '../@types/appearance.types';
-import fetchAndCache from '../lib/fetchAndCache';
+
+import { CharacterResponse } from 'types/character.types';
+import { AppearanceResponse } from 'types/appearance.types';
+import fetchAndCache from 'lib/fetchAndCache';
 
 const PRIVATE_KEY = import.meta.env.VITE_API_PRIVATE_KEY;
 const PUBLIC_KEY = import.meta.env.VITE_API_PUBLIC_KEY;

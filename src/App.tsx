@@ -11,9 +11,12 @@ import {
   getSeriesByCharacterId,
   getStoriesByCharacterId,
 } from './services';
-import { CharacterResult } from './@types/character.types';
-import { AppearanceResult } from './@types/appearance.types';
+
+import { CharacterResult } from './types/character.types';
+import { AppearanceResult } from './types/appearance.types';
+
 import useNavigatorOnLine from './hooks/useNetworkStatus';
+
 import { NoNetwork } from './Icons/NoNetwork';
 
 const App = () => {

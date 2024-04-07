@@ -1,4 +1,4 @@
-import { AppearanceResult } from '../../../../@types/appearance.types';
+import { AppearanceResult } from 'types/appearance.types';
 
 export type TList = {
   title: AppearanceResult['title'];

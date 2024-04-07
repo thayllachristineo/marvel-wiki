@@ -1,4 +1,4 @@
-import { CharacterResult } from '../../@types/character.types';
+import { CharacterResult } from 'types/character.types';
 
 export type TProps = {
   name: CharacterResult['name'];
