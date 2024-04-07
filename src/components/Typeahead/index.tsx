@@ -6,6 +6,7 @@ import {
   Flex,
   InputGroup,
   InputRightElement,
+  Text,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
@@ -24,6 +25,10 @@ const Typeahead: FC<TProps> = ({
   const Results = useMemo(() => {
     if (loading) {
       return <Spinner />;
+    }
+
+    if (!results?.length && !loading) {
+      return <Text align="center">Nenhum resultado</Text>;
     }
 
     return results?.map((result) => (
