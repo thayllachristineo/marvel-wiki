@@ -14,7 +14,6 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -23,6 +22,6 @@
     /* Absolute import */
     "baseUrl": "./src",
   },
-  "include": ["src"],
+  "include": ["src", "./jest.setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
