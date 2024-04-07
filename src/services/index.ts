@@ -3,15 +3,15 @@ import { md5 } from 'js-md5';
 import { CharacterResponse } from 'types/character.types';
 import { AppearanceResponse } from 'types/appearance.types';
 import fetchAndCache from 'lib/fetchAndCache';
+import { config } from 'config';
 
-const PRIVATE_KEY = import.meta.env.VITE_API_PRIVATE_KEY;
-const PUBLIC_KEY = import.meta.env.VITE_API_PUBLIC_KEY;
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}`;
+const { marvelPrivateKey, marvelPublicKey, marvelBaseUrl } = config;
 
-const CHARACTER_URL = `${BASE_URL}/characters`;
+const CHARACTER_URL = `${marvelBaseUrl}/characters`;
 
-const generateHash = () => md5(`${Date.now()}${PRIVATE_KEY}${PUBLIC_KEY}`);
-const setAuthParams = `ts=${Date.now()}&apikey=${PUBLIC_KEY}&hash=${generateHash()}`;
+const generateHash = () =>
+  md5(`${Date.now()}${marvelPrivateKey}${marvelPublicKey}`);
+const setAuthParams = `ts=${Date.now()}&apikey=${marvelPublicKey}&hash=${generateHash()}`;
 
 export const getCharactersByName = async (name: string) => {
   if (!name) return [];
@@ -23,7 +23,7 @@ export const getCharactersByName = async (name: string) => {
       cacheKey: `${CHARACTER_URL}?nameStartsWith=${name}`,
     });
     const json = (await response.json()) as CharacterResponse;
-    return json?.data?.results || [];
+    return json?.data?.results;
   } catch (error) {
     console.error(error);
   }

@@ -101,13 +101,13 @@ const App = () => {
         resetOnClickResults
       />
       {selectedCharacter && (
-        <div key={selectedCharacter.id}>
+        <div key={selectedCharacter?.id}>
           <Description
-            name={selectedCharacter.name}
-            description={selectedCharacter.description}
+            name={selectedCharacter?.name}
+            description={selectedCharacter?.description}
             thumbnail={{
-              path: selectedCharacter.thumbnail.path,
-              extension: selectedCharacter.thumbnail.extension,
+              path: selectedCharacter?.thumbnail?.path,
+              extension: selectedCharacter?.thumbnail?.extension,
             }}
           />
           <CharacterAccordion

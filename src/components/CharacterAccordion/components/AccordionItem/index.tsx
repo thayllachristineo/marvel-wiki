@@ -42,7 +42,7 @@ const AccordionItem: FC<TProps> = ({ name, onClick, list, loading }) => {
             py={2}
           >
             <Heading as="h3" size="md">
-              Participação em {name}
+              Aparições em {name}
             </Heading>
             <AccordionIcon />
           </AccordionButton>

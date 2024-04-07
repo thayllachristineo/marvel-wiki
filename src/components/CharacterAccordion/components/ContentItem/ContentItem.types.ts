@@ -4,5 +4,5 @@ export type TProps = {
   title: AppearanceResult['title'];
   description?: AppearanceResult['description'];
   textObjects?: AppearanceResult['textObjects'];
-  thumbnail: AppearanceResult['thumbnail'];
+  thumbnail?: AppearanceResult['thumbnail'];
 };
