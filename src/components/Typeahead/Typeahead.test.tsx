@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import { TProps } from './Typeahead.types';
 import Typeahead from '.';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const onChangeMock = jest.fn();
 const onClickResultMock = jest.fn();
@@ -19,7 +21,12 @@ const defaultProps: TProps = {
   ],
 };
 
-const setup = (props = defaultProps) => render(<Typeahead {...props} />);
+const setup = (props = defaultProps) =>
+  render(
+    <ChakraProvider>
+      <Typeahead {...props} />
+    </ChakraProvider>,
+  );
 
 describe('Typeahead', () => {
   it('should render component', () => {
@@ -93,7 +100,7 @@ describe('Typeahead', () => {
 
     fireEvent.change(input, { target: { value: 'hulk' } });
 
-    const result = screen.getByText('Nenhum resultado');
+    const result = screen.getByText('Nenhum resultado encontrado');
 
     expect(result).toBeInTheDocument();
   });
@@ -107,8 +114,8 @@ describe('Typeahead', () => {
 
     fireEvent.change(input, { target: { value: 'hulk' } });
 
-    const spinner = screen.getByTestId('spinner');
+    const skeleton = screen.getByTestId('skeleton');
 
-    expect(spinner).toBeInTheDocument();
+    expect(skeleton).toBeInTheDocument();
   });
 });

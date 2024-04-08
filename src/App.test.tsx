@@ -1,7 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { ChakraProvider } from '@chakra-ui/react';
+
 import App from './App';
 
-const setup = () => render(<App />);
+const setup = () =>
+  render(
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>,
+  );
 
 jest.mock('services', () => ({
   getCharactersByName: jest.fn(() =>

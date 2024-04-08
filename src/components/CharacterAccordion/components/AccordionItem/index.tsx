@@ -6,13 +6,14 @@ import {
   Heading,
   Divider,
   Text,
+  Spinner,
+  Flex,
 } from '@chakra-ui/react';
 import { FC, useMemo } from 'react';
 
 import { TProps } from './AccordionItem.types';
 
 import ContentList from '../ContentItem';
-import { Spinner } from 'components/Loading';
 
 const AccordionItem: FC<TProps> = ({ name, onClick, list, loading }) => {
   const Listings = useMemo(() => {
@@ -47,7 +48,13 @@ const AccordionItem: FC<TProps> = ({ name, onClick, list, loading }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel p={1}>
-            {loading ? <Spinner /> : <>{Listings}</>}
+            {loading ? (
+              <Flex justify="center" p={4}>
+                <Spinner data-testid="spinner" />
+              </Flex>
+            ) : (
+              <>{Listings}</>
+            )}
           </AccordionPanel>
         </>
       )}

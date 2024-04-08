@@ -6,12 +6,13 @@ import {
   Flex,
   InputGroup,
   InputRightElement,
+  SkeletonCircle,
+  SkeletonText,
   Text,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { TProps } from './Typeahead.types';
-import { Spinner } from '../Loading';
 
 const Typeahead: FC<TProps> = ({
   onChange,
@@ -24,11 +25,20 @@ const Typeahead: FC<TProps> = ({
 
   const Results = useMemo(() => {
     if (loading) {
-      return <Spinner />;
+      return (
+        <Flex data-testid="skeleton" align="center" gap={2} mx={2} p={2}>
+          <SkeletonCircle size="12" />
+          <SkeletonText noOfLines={1} skeletonHeight="4" w="100%" />
+        </Flex>
+      );
     }
 
     if (!results?.length && !loading) {
-      return <Text align="center">Nenhum resultado</Text>;
+      return (
+        <Text align="center" my={2}>
+          Nenhum resultado encontrado
+        </Text>
+      );
     }
 
     return results?.map((result) => (
