@@ -26,10 +26,18 @@ const Typeahead: FC<TProps> = ({
   const Results = useMemo(() => {
     if (loading) {
       return (
-        <Flex data-testid="skeleton" align="center" gap={2} mx={2} p={2}>
-          <SkeletonCircle size="12" />
-          <SkeletonText noOfLines={1} skeletonHeight="4" w="100%" />
-        </Flex>
+        <div data-testid="skeleton">
+          {Array(3)
+            .fill(true)
+            .map((_, index) => (
+              <Flex key={index} align="center" gap={2} mx={2} p={2}>
+                <div>
+                  <SkeletonCircle size="12" />
+                </div>
+                <SkeletonText noOfLines={1} skeletonHeight="4" w="100%" />
+              </Flex>
+            ))}
+        </div>
       );
     }
 
