@@ -10,19 +10,19 @@ const CharacterAccordion: FC<TProps> = ({
 }) => {
   const accordionItems = [
     {
-      name: 'HQs',
+      name: 'Quadrinhos',
       onClick: () => comics?.onClick(selectedCharacter.id),
       list: comics?.list,
       loading: comics?.loading,
     },
     {
-      name: 'Séries',
+      name: 'Séries de Quadrinhos',
       onClick: () => series?.onClick(selectedCharacter.id),
       list: series?.list,
       loading: series?.loading,
     },
     {
-      name: 'Stories',
+      name: 'Histórias em Quadrinhos',
       onClick: () => stories?.onClick(selectedCharacter.id),
       list: stories?.list,
       loading: stories?.loading,

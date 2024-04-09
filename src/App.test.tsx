@@ -93,9 +93,9 @@ describe('CharacterAccordion/ContentItem', () => {
 
     fireEvent.click(result);
 
-    const comics = screen.getByText('Aparições em HQs');
-    const series = screen.getByText('Aparições em Séries');
-    const stories = screen.getByText('Aparições em Stories');
+    const comics = screen.getByText('Aparições em Quadrinhos');
+    const series = screen.getByText('Aparições em Séries de Quadrinhos');
+    const stories = screen.getByText('Aparições em Histórias em Quadrinhos');
 
     fireEvent.click(comics);
     fireEvent.click(series);

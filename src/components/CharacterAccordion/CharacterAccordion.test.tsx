@@ -50,7 +50,7 @@ describe('CharacterAccordion/ContentItem', () => {
   it('should render comics', () => {
     setup();
 
-    const title = screen.getByText('Aparições em HQs');
+    const title = screen.getByText('Aparições em Quadrinhos');
     const contentTitle = screen.getByText('comics title');
     const contentDescription = screen.getByText('comics description');
 
@@ -62,7 +62,7 @@ describe('CharacterAccordion/ContentItem', () => {
   it('should render series', () => {
     setup();
 
-    const title = screen.getByText('Aparições em Séries');
+    const title = screen.getByText('Aparições em Séries de Quadrinhos');
 
     expect(title).toBeInTheDocument();
   });
@@ -70,7 +70,7 @@ describe('CharacterAccordion/ContentItem', () => {
   it('should render stories', () => {
     setup();
 
-    const title = screen.getByText('Aparições em Stories');
+    const title = screen.getByText('Aparições em Histórias em Quadrinhos');
 
     expect(title).toBeInTheDocument();
   });
