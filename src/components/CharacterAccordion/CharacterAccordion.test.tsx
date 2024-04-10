@@ -2,8 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { TProps } from './CharacterAccordion.types';
 import CharacterAccordion from '.';
 
-const onClickMock = jest.fn();
-
 const defaultProps: TProps = {
   selectedCharacter: {
     id: 1,
@@ -16,7 +14,6 @@ const defaultProps: TProps = {
   },
   appearance: {
     comics: {
-      onClick: onClickMock,
       list: [
         {
           id: 1,
@@ -31,12 +28,10 @@ const defaultProps: TProps = {
       loading: false,
     },
     series: {
-      onClick: onClickMock,
       list: [],
       loading: false,
     },
     stories: {
-      onClick: onClickMock,
       list: [],
       loading: false,
     },

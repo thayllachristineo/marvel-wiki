@@ -1,13 +1,10 @@
 import { Accordion } from '@chakra-ui/react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { TProps } from './AccordionItem.types';
 import AccordionItem from '.';
 
-const onClickMock = jest.fn();
-
 const defaultProps: TProps = {
   name: 'HQs',
-  onClick: onClickMock,
   list: [
     {
       title: 'title',
@@ -61,16 +58,6 @@ describe('CharacterAccordion/AccordionItem', () => {
     const content = screen.getByText('Nenhuma aparição');
 
     expect(content).toBeInTheDocument();
-  });
-
-  it('should click on accordion', () => {
-    setup({ ...defaultProps, list: undefined });
-
-    const title = screen.getByText('Aparições em HQs');
-
-    fireEvent.click(title);
-
-    expect(onClickMock).toHaveBeenCalled();
   });
 
   it('should render spinner', () => {

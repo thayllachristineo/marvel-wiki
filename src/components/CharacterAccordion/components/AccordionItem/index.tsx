@@ -15,7 +15,7 @@ import { TProps } from './AccordionItem.types';
 
 import ContentList from '../ContentItem';
 
-const AccordionItem: FC<TProps> = ({ name, onClick, list, loading }) => {
+const AccordionItem: FC<TProps> = ({ name, list, loading }) => {
   const Listings = useMemo(() => {
     if (!list?.length) return <Text>Nenhuma aparição</Text>;
     return list?.map(
@@ -35,29 +35,23 @@ const AccordionItem: FC<TProps> = ({ name, onClick, list, loading }) => {
 
   return (
     <ChakraAccordionItem p={0}>
-      {({ isExpanded }) => (
-        <>
-          <AccordionButton
-            onClick={() => !isExpanded && !list && onClick()}
-            px={1}
-            py={2}
-          >
-            <Heading as="h3" size="md">
-              Aparições em {name}
-            </Heading>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel p={1}>
-            {loading ? (
-              <Flex justify="center" p={4}>
-                <Spinner data-testid="spinner" />
-              </Flex>
-            ) : (
-              <>{Listings}</>
-            )}
-          </AccordionPanel>
-        </>
-      )}
+      <>
+        <AccordionButton px={1} py={2}>
+          <Heading as="h3" size="md">
+            Aparições em {name}
+          </Heading>
+          <AccordionIcon />
+        </AccordionButton>
+        <AccordionPanel p={1}>
+          {loading ? (
+            <Flex justify="center" p={4}>
+              <Spinner data-testid="spinner" />
+            </Flex>
+          ) : (
+            <>{Listings}</>
+          )}
+        </AccordionPanel>
+      </>
     </ChakraAccordionItem>
   );
 };

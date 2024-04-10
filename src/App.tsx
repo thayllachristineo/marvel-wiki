@@ -48,21 +48,21 @@ const App = () => {
     setLoadingChar(false);
   };
 
-  const handleOnClickComics = async (id: number) => {
+  const getComics = async (id: number) => {
     setLoadingListComics(true);
     const data = await getComicsByCharacterId(id);
     setComicsDataAPI(data || []);
     setLoadingListComics(false);
   };
 
-  const handleOnClickSeries = async (id: number) => {
+  const getSeries = async (id: number) => {
     setLoadingListSeries(true);
     const data = await getSeriesByCharacterId(id);
     setSeriesDataAPI(data || []);
     setLoadingListSeries(false);
   };
 
-  const handleOnClickStories = async (id: number) => {
+  const getStories = async (id: number) => {
     setLoadingListStories(true);
     const data = await getStoriesByCharacterId(id);
     setStoriesDataAPI(data || []);
@@ -71,9 +71,10 @@ const App = () => {
 
   useEffect(() => {
     if (selectedCharacterId) {
-      setComicsDataAPI(undefined);
-      setSeriesDataAPI(undefined);
-      setStoriesDataAPI(undefined);
+      getComics(selectedCharacterId);
+      getSeries(selectedCharacterId);
+      getStories(selectedCharacterId);
+
       setSelectedCharacter(
         charDataAPI?.find(({ id }) => id === selectedCharacterId),
       );
@@ -114,17 +115,14 @@ const App = () => {
             selectedCharacter={selectedCharacter}
             appearance={{
               comics: {
-                onClick: handleOnClickComics,
                 list: comicsDataAPI,
                 loading: loadingListComics,
               },
               series: {
-                onClick: handleOnClickSeries,
                 list: seriesDataAPI,
                 loading: loadingListSeries,
               },
               stories: {
-                onClick: handleOnClickStories,
                 list: storiesDataAPI,
                 loading: loadingListStories,
               },

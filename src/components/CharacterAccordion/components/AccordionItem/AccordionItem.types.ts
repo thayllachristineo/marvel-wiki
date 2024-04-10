@@ -9,7 +9,6 @@ export type TList = {
 
 export type TProps = {
   name: string;
-  onClick: () => void;
   list?: Array<TList>;
   loading?: boolean;
 };
