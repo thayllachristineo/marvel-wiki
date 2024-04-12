@@ -11,12 +11,23 @@ const CharacterDescription: FC<TProps> = ({
   const thumb = `${path}.${extension}`;
 
   return (
-    <Flex align="center" justify="space-between" gap={2} mb={4}>
+    <Flex
+      align="center"
+      justify="space-between"
+      gap={2}
+      mb={4}
+      direction={{ base: 'column-reverse', md: 'unset' }}
+    >
       <Box>
         <Heading mb={2}>{name}</Heading>
         <Text>{description || 'Sem descrição'}</Text>
       </Box>
-      <Image borderRadius="full" boxSize="150px" src={thumb} alt={name} />
+      <Image
+        borderRadius="full"
+        boxSize={{ base: '200px', md: '150px' }}
+        src={thumb}
+        alt={name}
+      />
     </Flex>
   );
 };
